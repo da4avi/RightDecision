@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="RightDecision/RightDecision.csproj" />
+  <Project Path="RightDecisionEditor/RightDecisionEditor.csproj" />
+</Solution>
