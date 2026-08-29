@@ -16,6 +16,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<SceneService>();
+builder.Services.AddScoped<ChoiceService>();
 
 var app = builder.Build();
 
