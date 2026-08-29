@@ -1,4 +1,11 @@
+using RightDecisionEditor.Configurations;
+using RightDecisionEditor.Services;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+//banco config
+builder.Services.AddDbConfig(builder.Configuration);
 
 // Add services to the container.
 
@@ -7,6 +14,8 @@ builder.Services.AddControllers();
 //swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<SceneService>();
 
 var app = builder.Build();
 
