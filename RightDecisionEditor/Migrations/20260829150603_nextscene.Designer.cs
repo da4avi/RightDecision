@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RightDecisionEditor.Data;
 
@@ -11,9 +12,11 @@ using RightDecisionEditor.Data;
 namespace RightDecisionEditor.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260829150603_nextscene")]
+    partial class nextscene
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,28 +46,6 @@ namespace RightDecisionEditor.Migrations
                     b.ToTable("Choices");
                 });
 
-            modelBuilder.Entity("RightDecisionEditor.Models.Game", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.PrimitiveCollection<string>("ScenesId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Games");
-                });
-
             modelBuilder.Entity("RightDecisionEditor.Models.Scene", b =>
                 {
                     b.Property<Guid>("Id")
@@ -74,12 +55,6 @@ namespace RightDecisionEditor.Migrations
                     b.PrimitiveCollection<string>("ChoicesId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("FirstScene")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid>("GameId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Text")
                         .IsRequired()

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RightDecisionEditor.Data;
 
@@ -11,9 +12,11 @@ using RightDecisionEditor.Data;
 namespace RightDecisionEditor.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260901133808_postgame")]
+    partial class postgame
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,9 +77,6 @@ namespace RightDecisionEditor.Migrations
                     b.PrimitiveCollection<string>("ChoicesId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("FirstScene")
-                        .HasColumnType("bit");
 
                     b.Property<Guid>("GameId")
                         .HasColumnType("uniqueidentifier");

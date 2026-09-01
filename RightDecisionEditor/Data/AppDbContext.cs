@@ -7,5 +7,6 @@ namespace RightDecisionEditor.Data
     {
         public DbSet<Scene> Scenes { get; set; }
         public DbSet<Choice> Choices { get; set; }
+        public DbSet<Game> Games { get; set; }
     }
 }
