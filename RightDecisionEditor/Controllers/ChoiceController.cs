@@ -5,7 +5,7 @@ using RightDecisionEditor.Services;
 namespace RightDecisionEditor.Controllers;
 
 [ApiController]
-[Route("api/scene")]
+[Route("api/choice")]
 public class ChoiceController(ChoiceService choiceService) : ControllerBase
 {
     private readonly ChoiceService _choiceService = choiceService;
