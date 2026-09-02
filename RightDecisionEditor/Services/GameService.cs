@@ -10,7 +10,7 @@ public class GameService(AppDbContext context)
     
     public async Task<Game> PostGame (GameRequestDto gameRequest)
     {
-        Game game = new(gameRequest.Title, gameRequest.Description, []);
+        Game game = new(gameRequest.Title, gameRequest.Description);
         
         _context.Games.Add(game);
 
