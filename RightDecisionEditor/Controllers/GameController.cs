@@ -17,4 +17,18 @@ public class GameController(GameService gameService) : ControllerBase
 
         return Ok(result);
     }
+    [HttpGet("firstScene")]
+    public async Task<IActionResult> GetFirstScene(Guid gameId)
+    {
+        var result = await _gameService.GetFirstScene(gameId);
+
+        return Ok(result);
+    }
+    [HttpGet("scene")]
+    public async Task<IActionResult> GetScene(Guid choiceId)
+    {
+        var result = await _gameService.GetScene(choiceId);
+
+        return Ok(result);
+    }
 }
