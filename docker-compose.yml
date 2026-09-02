@@ -1,15 +1,36 @@
 services:
-  sqlserver-rd:
+  sqlserver-rd-editor:
     environment:
         - ACCEPT_EULA=Y
         - SA_PASSWORD=${MSSQL_SA_PASSWORD}
     ports:
       - "1433:1433"
-    container_name: sqlserver-rd
+    container_name: sqlserver-rd-editor
     volumes:
-      - sql_data:/var/opt/mssql
+      - sql_data_rd_editor:/var/opt/mssql
     image: mcr.microsoft.com/mssql/server:2025-latest
     restart: unless-stopped
 
+  sqlserver-rd-player:
+    environment:
+        - ACCEPT_EULA=Y
+        - SA_PASSWORD=${MSSQL_SA_PASSWORD}
+    ports:
+      - "1434:1433"
+    container_name: sqlserver-rd-player
+    volumes:
+      - sql_data_rd_player:/var/opt/mssql
+    image: mcr.microsoft.com/mssql/server:2025-latest
+    restart: unless-stopped
+
+  rabbitmq-rd:
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    container_name: rabbitmq-rd
+    image: rabbitmq:4-management
+    restart: unless-stopped
+
 volumes:
-  sql_data:
+  sql_data_rd_editor:
+  sql_data_rd_player:
