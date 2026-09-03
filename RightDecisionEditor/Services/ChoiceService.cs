@@ -13,10 +13,12 @@ public class ChoiceService(AppDbContext context)
     {
         Choice choice = new(choiceRequest.Text, choiceRequest.SceneId, choiceRequest.NextSceneId);
         Scene scene = await _context.Scenes.FirstOrDefaultAsync(scene => scene.Id == choiceRequest.SceneId) ?? throw new KeyNotFoundException($"Scene with ID {choiceRequest.SceneId} not Found");
-        
+        Game game = await _context.Games.FirstOrDefaultAsync(game => game.Id == scene.GameId) ?? throw new KeyNotFoundException($"Game with ID {scene.GameId} not Found");
+
         _context.Choices.Add(choice);
         //update the scene choices
         scene.Choices.Add(choice);
+        game.IsPublished = false;
 
         await _context.SaveChangesAsync();
 
