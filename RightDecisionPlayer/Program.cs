@@ -13,6 +13,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//masstransit
+builder.Services.AddMassTransitConfig();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
