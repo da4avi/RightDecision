@@ -1,4 +1,5 @@
 using RightDecisionPlayer.Configurations;
+using RightDecisionPlayer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,8 @@ builder.Services.AddSwaggerGen();
 
 //masstransit
 builder.Services.AddMassTransitConfig();
+
+builder.Services.AddScoped<GameService>();
 
 var app = builder.Build();
 
