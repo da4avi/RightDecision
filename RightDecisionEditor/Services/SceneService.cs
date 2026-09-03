@@ -11,11 +11,11 @@ public class SceneService(AppDbContext context)
     
     public async Task<Scene> PostScene (SceneRequestDto sceneRequest)
     {
-        Scene scene = new(sceneRequest.GameId, sceneRequest.Title, sceneRequest.Text, [], sceneRequest.FirstScene);
+        Scene scene = new(sceneRequest.GameId, sceneRequest.Title, sceneRequest.Text, sceneRequest.FirstScene);
         Game game = await _context.Games.FirstOrDefaultAsync(game => game.Id == sceneRequest.GameId) ?? throw new KeyNotFoundException($"Game with ID {sceneRequest.GameId} not Found");
 
         _context.Scenes.Add(scene);
-        game.ScenesId.Add(scene.Id);
+        game.Scenes.Add(scene);
 
         await _context.SaveChangesAsync();
 

@@ -16,7 +16,7 @@ public class ChoiceService(AppDbContext context)
         
         _context.Choices.Add(choice);
         //update the scene choices
-        scene.ChoicesId.Add(choice.Id);
+        scene.Choices.Add(choice);
 
         await _context.SaveChangesAsync();
 
