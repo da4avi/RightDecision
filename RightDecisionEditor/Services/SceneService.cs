@@ -16,6 +16,7 @@ public class SceneService(AppDbContext context)
 
         _context.Scenes.Add(scene);
         game.Scenes.Add(scene);
+        game.IsPublished = false;
 
         await _context.SaveChangesAsync();
 
