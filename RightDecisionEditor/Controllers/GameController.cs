@@ -17,4 +17,12 @@ public class GameController(GameService gameService) : ControllerBase
 
         return Ok(result);
     }
+
+    [HttpPost("publishGame")]
+    public async Task<IActionResult> PublishGame(Guid gameId)
+    {
+        var result = await _gameService.PublishGame(gameId);
+
+        return Ok(result);
+    }
 }
